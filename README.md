@@ -1,4 +1,4 @@
 # DataBench
 
 Dependencies:
-*  [QMiner](https://github.com/qminer/qminer)
+*  [Keras](https://github.com/keras-team/keras)
