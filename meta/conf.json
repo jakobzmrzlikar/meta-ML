@@ -1,0 +1,27 @@
+{
+  "dataset": {},
+  "model": {
+    "architecture": {
+      "Activation": [
+        "sigmoid"
+      ],
+      "Dense": [
+        1
+      ]
+    },
+    "loss": "binary_crossentropy",
+    "metrics": [
+      "accuracy"
+    ],
+    "optimizer": "rmsprop",
+    "train": {
+      "batch_size": 32,
+      "epochs": 100
+    },
+    "type": "Sequential"
+  },
+  "results": {
+    "acc": 0.483,
+    "loss": 0.728939697265625
+  }
+}
