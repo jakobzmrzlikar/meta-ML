@@ -1,5 +1,7 @@
 {
-  "dataset": {},
+  "dataset": {
+    "id": "pima_indians_diabetes"
+  },
   "model": {
     "architecture": {
       "Activation": [
@@ -13,15 +15,16 @@
     "metrics": [
       "accuracy"
     ],
-    "optimizer": "rmsprop",
+    "optimizer": "sgd",
     "train": {
-      "batch_size": 32,
-      "epochs": 100
+      "batch_size": 50,
+      "epochs": 1000
     },
     "type": "Sequential"
   },
   "results": {
-    "acc": 0.483,
-    "loss": 0.728939697265625
+    "acc": 0.6739130564357924,
+    "loss": 5.255900839100713,
+    "time": 4.496888542000306
   }
 }
