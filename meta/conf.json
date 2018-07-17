@@ -5,9 +5,11 @@
   "model": {
     "architecture": {
       "Activation": [
+        "sigmoid",
         "sigmoid"
       ],
       "Dense": [
+        32,
         1
       ]
     },
@@ -17,14 +19,14 @@
     ],
     "optimizer": "sgd",
     "train": {
-      "batch_size": 50,
+      "batch_size": 32,
       "epochs": 1000
     },
     "type": "Sequential"
   },
   "results": {
-    "acc": 0.6739130564357924,
-    "loss": 5.255900839100713,
-    "time": 4.496888542000306
+    "acc": 0.6782608695652174,
+    "loss": 0.5763532239457835,
+    "time": 24.938093482000113
   }
 }

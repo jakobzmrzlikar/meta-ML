@@ -34,7 +34,7 @@ model.compile(
 )
 
 start = timer()
-cpu = psutil.cpu_freq()
+
 model.fit(
     data,
     labels,
