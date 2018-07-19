@@ -1,32 +1,36 @@
 {
   "dataset": {
-    "id": "pima_indians_diabetes"
+    "features": 8,
+    "id": "old_people_activity_sensor",
+    "instances": 53165
   },
   "model": {
     "architecture": {
       "Activation": [
         "sigmoid",
-        "sigmoid"
+        "relu",
+        "softmax"
       ],
       "Dense": [
+        16,
         32,
-        1
+        5
       ]
     },
-    "loss": "binary_crossentropy",
+    "loss": "categorical_crossentropy",
     "metrics": [
       "accuracy"
     ],
     "optimizer": "sgd",
     "train": {
-      "batch_size": 32,
-      "epochs": 1000
+      "batch_size": 64,
+      "epochs": 20
     },
     "type": "Sequential"
   },
   "results": {
-    "acc": 0.6782608695652174,
-    "loss": 0.5763532239457835,
-    "time": 24.938093482000113
+    "acc": 0.5929464873557457,
+    "loss": 0.9370523034511657,
+    "time": 34.63066341999729
   }
 }
