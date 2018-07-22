@@ -7,30 +7,28 @@
   "model": {
     "architecture": {
       "Activation": [
-        "sigmoid",
         "relu",
         "softmax"
       ],
       "Dense": [
-        16,
         32,
         5
       ]
     },
-    "loss": "categorical_crossentropy",
-    "metrics": [
-      "accuracy"
-    ],
-    "optimizer": "sgd",
-    "train": {
+    "hyperparameters": {
       "batch_size": 64,
-      "epochs": 20
-    },
-    "type": "Sequential"
+      "epochs": 10,
+      "loss": "categorical_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "sgd",
+      "type": "Sequential"
+    }
   },
   "results": {
-    "acc": 0.5929464873557457,
-    "loss": 0.9370523034511657,
-    "time": 34.63066341999729
+    "acc": 0.2865230885204946,
+    "loss": 11.49988895272935,
+    "time": 25.962461316999907
   }
 }
