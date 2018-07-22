@@ -16,7 +16,7 @@
       ]
     },
     "hyperparameters": {
-      "batch_size": 64,
+      "batch_size": 32,
       "epochs": 10,
       "loss": "categorical_crossentropy",
       "metrics": [
@@ -27,8 +27,8 @@
     }
   },
   "results": {
-    "acc": 0.2865230885204946,
-    "loss": 11.49988895272935,
-    "time": 25.962461316999907
+    "acc": 0.28652308850031427,
+    "loss": 11.499888949729218,
+    "time": 41.1308256479997
   }
 }
