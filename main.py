@@ -9,20 +9,20 @@ from keras.layers import Dense, Activation
 from timeit import default_timer as timer
 
 
-with open("meta/conf.json", 'r') as f:
+with open("meta/meta.json", 'r') as f:
     meta = json.load(f)
 
-conf = meta["model"]
 dataset = meta["dataset"]
+conf = meta["model"]
 arch = conf["architecture"]
-train = conf["train"]
+hyperparams = conf["hyperparameters"]
 results = meta["results"]
 
 
 with open("data/" + dataset["id"] + "/train.csv") as d:
     reader = csv.reader(d, delimiter=',')
     data = list(reader)
-    data = np.array(data).astype(float)
+    data = np.array(data, dtype="float")
     np.random.shuffle(data)
 
 x = data[:, :-1]
@@ -32,7 +32,7 @@ dataset["instances"] = data.shape[0]
 dataset["features"] = data.shape[1]-1
 
 
-if conf["type"] == "Sequential":
+if hyperparams["type"] == "Sequential":
     model = Sequential()
     for d, a in zip(arch["Dense"], arch["Activation"]):
         model.add(Dense(
@@ -40,10 +40,11 @@ if conf["type"] == "Sequential":
         activation=a)) #TODO: First layer should have input size spec
 
 model.compile(
-    optimizer=conf["optimizer"],
-    loss=conf["loss"],
-    metrics=conf["metrics"]
+    optimizer=hyperparams["optimizer"],
+    loss=hyperparams["loss"],
+    metrics=hyperparams["metrics"]
 )
+from pprint import pprint
 
 
 start = timer()
@@ -51,8 +52,8 @@ start = timer()
 model.fit(
     x,
     y,
-    epochs=train["epochs"],
-    batch_size=train["batch_size"],
+    epochs=hyperparams["epochs"],
+    batch_size=hyperparams["batch_size"],
     verbose=1,
 )
 end = timer()
@@ -68,7 +69,7 @@ y = keras.utils.to_categorical(data[:, -1])
 loss_and_metrics = model.evaluate(
     x,
     y,
-    batch_size=train["batch_size"]
+    batch_size=hyperparams["batch_size"]
 )
 
 for name,value in zip(model.metrics_names, loss_and_metrics):
@@ -77,5 +78,9 @@ results["time"] = end-start
 
 pprint(meta)
 
-with open("meta/conf.json", 'w') as f:
+with open("meta/meta.json", 'w') as f:
     json.dump(meta, f, ensure_ascii=False, indent=2, sort_keys=True)
+
+conf = model.get_config()
+with open("conf.json", 'w') as f:
+    json.dump(conf, f, ensure_ascii=False, indent=2, sort_keys=True)
