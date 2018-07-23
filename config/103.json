@@ -1,0 +1,34 @@
+{
+  "dataset": {
+    "features": 4,
+    "id": "iris",
+    "instances": 122
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "sigmoid",
+        "softmax"
+      ],
+      "Dense": [
+        128,
+        3
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 128,
+      "epochs": 10,
+      "loss": "categorical_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "sgd",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+    "acc": 0.25,
+    "loss": 1.0751664638519287,
+    "time": 0.44052829800057225
+  }
+}
