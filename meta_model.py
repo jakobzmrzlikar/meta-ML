@@ -38,3 +38,5 @@ for i in range(len(classes)):
     error = int(abs(classes[i][0]-y_test[i]))
     print("Predicted: {}, actual: {}, error: {}".format(
     int(classes[i][0]), y_test[i], error))
+
+model.save_weights("meta/weights.npy")
