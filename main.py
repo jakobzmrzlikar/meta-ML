@@ -60,7 +60,7 @@ def run(config):
     )
     end = timer()
 
-    with open("data/" + dataset["id"] + "/train.csv") as d:
+    with open("data/" + dataset["id"] + "/test.csv") as d:
         reader = csv.reader(d, delimiter=',')
         data = list(reader)
         data = np.array(data).astype(float)
@@ -84,8 +84,9 @@ def run(config):
         json.dump(meta, f, ensure_ascii=False, indent=2, sort_keys=True)
 
 if __name__ == "__main__":
-    config = "config/2.json"
-    run(config)
-    data = np.load("meta/data.npy")
-    data = np.vstack((data, np.array(encode(config))))
-    np.save("meta/data.npy", data)
+    for i in range(132, 260):
+        config = "config/"+str(i)+".json"
+        run(config)
+        data = np.load("meta/data.npy")
+        data = np.vstack((data, np.array(encode(config))))
+        np.save("meta/data.npy", data)
