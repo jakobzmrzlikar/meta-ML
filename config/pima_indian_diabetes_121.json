@@ -1,0 +1,34 @@
+{
+  "dataset": {
+    "features": 8,
+    "id": "pima_indian_diabetes",
+    "instances": 538
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "softmax"
+      ],
+      "Dense": [
+        256,
+        2
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 16,
+      "epochs": 50,
+      "loss": "categorical_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "adadelta",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+    "acc": 0.5826086956521739,
+    "loss": 0.9933655381202697,
+    "time": 7.787639283998942
+  }
+}
