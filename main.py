@@ -46,8 +46,6 @@ def run(config):
         loss=hyperparams["loss"],
         metrics=hyperparams["metrics"]
     )
-    from pprint import pprint
-
 
     start = timer()
 
@@ -84,8 +82,11 @@ def run(config):
         json.dump(meta, f, ensure_ascii=False, indent=2, sort_keys=True)
 
 if __name__ == "__main__":
-    for i in range(132, 260):
-        config = "config/"+str(i)+".json"
+    name = "pima_indian_diabetes"
+    for i in range(1, 840):
+        print("---------------------------------------------------------------")
+        print("Config {}/{}".format(i, 840))
+        config = "config/"+name+'_'+str(i)+".json"
         run(config)
         data = np.load("meta/data.npy")
         data = np.vstack((data, np.array(encode(config))))
