@@ -88,6 +88,6 @@ if __name__ == "__main__":
         print("Config {}/{}".format(i, 1793))
         config = "config/"+name+'_'+str(i)+".json"
         run(config)
-        data = np.load("meta/data.npy")
-        data = np.vstack((data, np.array(encode(config))))
-        np.save("meta/data.npy", data)
+        # data = np.load("meta/data.npy")
+        # data = np.vstack((data, np.array(encode(config))))
+        # np.save("meta/data.npy", data)
