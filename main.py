@@ -36,10 +36,12 @@ def run(config):
 
     if hyperparams["type"] == "Sequential":
         model = Sequential()
+        model.add(Dense(dataset["features"], activation='linear', input_shape=(dataset["features"],)))
+        
         for d, a in zip(arch["Dense"], arch["Activation"]):
             model.add(Dense(
             d,
-            activation=a)) #TODO: First layer should have input size spec
+            activation=a))
 
     model.compile(
         optimizer=hyperparams["optimizer"],
