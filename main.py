@@ -83,9 +83,9 @@ def run(config):
 
 if __name__ == "__main__":
     name = "pima_indian_diabetes"
-    for i in range(1, 840):
+    for i in range(840, 1793):
         print("---------------------------------------------------------------")
-        print("Config {}/{}".format(i, 840))
+        print("Config {}/{}".format(i, 1793))
         config = "config/"+name+'_'+str(i)+".json"
         run(config)
         data = np.load("meta/data.npy")
