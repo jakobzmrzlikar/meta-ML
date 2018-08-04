@@ -1,0 +1,39 @@
+{
+  "activation": {
+    "elu": 1,
+    "hard_sigmoid": 8,
+    "linear": 9,
+    "relu": 5,
+    "selu": 2,
+    "sigmoid": 7,
+    "softmax": 0,
+    "softplus": 3,
+    "softsign": 4,
+    "tanh": 6
+  },
+  "loss": {
+    "binary_crossentropy": 10,
+    "categorical_crossentropy": 8,
+    "categorical_hinge": 6,
+    "cosine_proximity": 13,
+    "hinge": 5,
+    "kullback_leibler_divergence": 11,
+    "logcosh": 7,
+    "mean_absolute_error": 1,
+    "mean_absolute_percentage_error": 2,
+    "mean_squared_error": 0,
+    "mean_squared_logarithmic_error": 3,
+    "poisson": 12,
+    "sparse_categorical_crossentropy": 9,
+    "squared_hinge": 4
+  },
+  "optimizer": {
+    "adadelta": 3,
+    "adagrad": 2,
+    "adam": 4,
+    "adamax": 5,
+    "nadam": 6,
+    "rmsprop": 1,
+    "sgd": 0
+  }
+}
