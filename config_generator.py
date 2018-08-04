@@ -22,6 +22,6 @@ def generate(dataset):
                     for j in range(4):
                         hyperparams["batch_size"] = 2**(j+4)
                         idx+=1
-                        name = "config/pima_indian_diabetes_"+str(idx)+".json"
+                        name = "config/"+dataset+str(idx)+".json"
                         with open(name, 'w') as f:
                             json.dump(meta, f, ensure_ascii=False, indent=2, sort_keys=True)
