@@ -8,7 +8,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation
 from timeit import default_timer as timer
 
-def run(config):
+def run(config, load_data=True, x=None, y=None):
     start = timer()
     with open(config, 'r') as f:
         meta = json.load(f)
@@ -19,23 +19,32 @@ def run(config):
     hyperparams = conf["hyperparameters"]
     results = meta["results"]
 
+    if load_data:
+        with open("data/" + dataset["id"] + "/train.csv") as d:
+            reader = csv.reader(d, delimiter=',')
+            data = list(reader)
+            data = np.array(data, dtype="float")
+            np.random.shuffle(data)
 
-    with open("data/" + dataset["id"] + "/train.csv") as d:
-        reader = csv.reader(d, delimiter=',')
-        data = list(reader)
-        data = np.array(data, dtype="float")
-        np.random.shuffle(data)
+        x = data[:, :-1]
+        y = keras.utils.to_categorical(data[:, -1])
 
-    x = data[:, :-1]
-    y = keras.utils.to_categorical(data[:, -1])
+        dataset["instances"] = data.shape[0]
+        dataset["features"] = data.shape[1]-1
+        shape = (dataset["features"],)
 
-    dataset["instances"] = data.shape[0]
-    dataset["features"] = data.shape[1]-1
-
+    # TODO Still working on this one
+    # else:
+    #     if x == None or y == None:
+    #         raise ValueError('Expected x and y to be arrays, not {} and {}'.format(x, y))
+    #     else:
+    #         dataset["instances"] = len(x)
+    #         dataset["features"] = data.shape[1]-1
+    #         shape = (dataset["features"],)
 
     if hyperparams["type"] == "Sequential":
         model = Sequential()
-        model.add(Dense(dataset["features"], activation='linear', input_shape=(dataset["features"],)))
+        model.add(Dense(dataset["features"], activation='linear', input_shape=shape))
 
         for d, a in zip(arch["Dense"], arch["Activation"]):
             model.add(Dense(
