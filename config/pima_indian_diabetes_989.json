@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "pima_indian_diabetes"
+    "features": 8,
+    "id": "pima_indian_diabetes",
+    "instances": 538
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.643478260351264,
+    "loss": 0.6151409063650214,
+    "time": 19.291312976479958
+  }
 }
