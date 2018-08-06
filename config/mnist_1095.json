@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "old_people_activity_sensor"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "hard_sigmoid",
+        "softmax"
+      ],
+      "Dense": [
+        32,
+        10
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 64,
+      "epochs": 20,
+      "loss": "categorical_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "nadam",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}
