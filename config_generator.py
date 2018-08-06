@@ -1,9 +1,10 @@
 import json
-from meta_encoder import optimizer
 
 def generate(dataset):
     with open("config/"+dataset+".json", 'r') as f:
         meta = json.load(f)
+    with open("encoding.json", 'r') as f:
+        encoding = json.load(f)
 
     hyperparams = meta["model"]["hyperparameters"]
     arch = meta["model"]["architecture"]
@@ -13,7 +14,7 @@ def generate(dataset):
     idx = 0
     for m in range(4):
         arch["Activation"][0] = acti[m]
-        for n in optimizer:
+        for n in encoding["optimizer"]:
             hyperparams["optimizer"] = n
             for k in range(4):
                 arch["Dense"][0] = 2**(k+5)
@@ -22,6 +23,6 @@ def generate(dataset):
                     for j in range(4):
                         hyperparams["batch_size"] = 2**(j+4)
                         idx+=1
-                        name = "config/"+dataset+str(idx)+".json"
+                        name = "config/"+dataset+'_'+str(idx)+".json"
                         with open(name, 'w') as f:
                             json.dump(meta, f, ensure_ascii=False, indent=2, sort_keys=True)
