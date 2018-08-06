@@ -27,7 +27,7 @@ def run(config, load_data=True, x=None, y=None):
             np.random.shuffle(data)
 
         x = data[:, :-1]
-        y = keras.utils.to_categorical(data[:, -1])
+        y = keras.utils.to_categorical(data[:, -1], num_classes=10)
 
         dataset["instances"] = data.shape[0]
         dataset["features"] = data.shape[1]-1

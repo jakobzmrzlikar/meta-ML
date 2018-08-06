@@ -14,9 +14,9 @@ if __name__ == "__main__":
 
     name = input("Name of the dataset: ")
 
-    for i in range(1209, 1793):
+    for i in range(1, 50):
         print("---------------------------------------------------------------")
-        print("Config {}/{}".format(i, 1793))
+        print("Config {}/{}".format(i, 50))
         config = "config/"+name+'_'+str(i)+".json"
 
         # Generate new metadata
@@ -25,6 +25,6 @@ if __name__ == "__main__":
         # Append new data to metadataset
         data = np.vstack((data, np.array(encode(config))))
 
-        quick_train(model, data)
+        # quick_train(model, data)
 
     np.save("meta/data.npy", data)
