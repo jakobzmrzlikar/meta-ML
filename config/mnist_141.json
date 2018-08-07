@@ -1,6 +1,6 @@
 {
   "dataset": {
-    "id": "old_people_activity_sensor"
+    "id": "mnist"
   },
   "model": {
     "architecture": {
@@ -20,7 +20,7 @@
       "metrics": [
         "accuracy"
       ],
-      "optimizer": "sgd",
+      "optimizer": "adam",
       "type": "Sequential"
     }
   },
