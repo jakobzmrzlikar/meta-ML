@@ -8,7 +8,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation
 from timeit import default_timer as timer
 
-def run(config, load_data=True, x=None, y=None):
+def run(config, train=None, test=None):
     with open(config, 'r') as f:
         meta = json.load(f)
 
@@ -18,28 +18,19 @@ def run(config, load_data=True, x=None, y=None):
     hyperparams = conf["hyperparameters"]
     results = meta["results"]
 
-    if load_data:
+    if train is None:
         with open("data/" + dataset["id"] + "/train.csv", 'r') as d:
             reader = csv.reader(d, delimiter=',')
-            data = list(reader)
-            data = np.array(data, dtype="float")
-            np.random.shuffle(data)
+            train = list(reader)
+            train = np.array(train, dtype="float")
 
-        x = data[:, :-1]
-        y = keras.utils.to_categorical(data[:, -1], num_classes=10)
+    np.random.shuffle(train)
+    x = train[:, :-1]
+    y = keras.utils.to_categorical(train[:, -1], num_classes=10)
 
-        dataset["instances"] = data.shape[0]
-        dataset["features"] = data.shape[1]-1
-        shape = (dataset["features"],)
-
-    # TODO Still working on this one
-    # else:
-    #     if x == None or y == None:
-    #         raise ValueError('Expected x and y to be arrays, not {} and {}'.format(x, y))
-    #     else:
-    #         dataset["instances"] = len(x)
-    #         dataset["features"] = data.shape[1]-1
-    #         shape = (dataset["features"],)
+    dataset["instances"] = train.shape[0]
+    dataset["features"] = train.shape[1]-1
+    shape = (dataset["features"],)
 
     if hyperparams["type"] == "Sequential":
         model = Sequential()
@@ -67,14 +58,15 @@ def run(config, load_data=True, x=None, y=None):
     )
     end = timer()
 
-    with open("data/" + dataset["id"] + "/test.csv", 'r') as d:
-        reader = csv.reader(d, delimiter=',')
-        data = list(reader)
-        data = np.array(data, dtype="float")
-        np.random.shuffle(data)
+    if test is None:
+        with open("data/" + dataset["id"] + "/test.csv", 'r') as d:
+            reader = csv.reader(d, delimiter=',')
+            test = list(reader)
+            test = np.array(test, dtype="float")
 
-    x = data[:, :-1]
-    y = keras.utils.to_categorical(data[:, -1])
+    np.random.shuffle(test)
+    x = test[:, :-1]
+    y = keras.utils.to_categorical(test[:, -1])
 
     loss_and_metrics = model.evaluate(
         x,
