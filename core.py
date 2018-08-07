@@ -9,7 +9,6 @@ from keras.layers import Dense, Activation
 from timeit import default_timer as timer
 
 def run(config, load_data=True, x=None, y=None):
-    start = timer()
     with open(config, 'r') as f:
         meta = json.load(f)
 
@@ -20,7 +19,7 @@ def run(config, load_data=True, x=None, y=None):
     results = meta["results"]
 
     if load_data:
-        with open("data/" + dataset["id"] + "/train.csv") as d:
+        with open("data/" + dataset["id"] + "/train.csv", 'r') as d:
             reader = csv.reader(d, delimiter=',')
             data = list(reader)
             data = np.array(data, dtype="float")
@@ -68,10 +67,11 @@ def run(config, load_data=True, x=None, y=None):
     )
     end = timer()
 
-    with open("data/" + dataset["id"] + "/test.csv") as d:
+    with open("data/" + dataset["id"] + "/test.csv", 'r') as d:
         reader = csv.reader(d, delimiter=',')
         data = list(reader)
-        data = np.array(data).astype(float)
+        data = np.array(data, dtype="float")
+        np.random.shuffle(data)
 
     x = data[:, :-1]
     y = keras.utils.to_categorical(data[:, -1])
