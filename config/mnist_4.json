@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "mnist"
+    "features": 784,
+    "id": "mnist",
+    "instances": 60000
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.5548,
+    "loss": 7.163419861602783,
+    "time": 212.35665063316765
+  }
 }
