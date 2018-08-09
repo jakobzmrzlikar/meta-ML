@@ -1,0 +1,34 @@
+{
+  "dataset": {
+    "features": 1000,
+    "id": "reuters",
+    "instances": 8982
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "softmax"
+      ],
+      "Dense": [
+        32,
+        46
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 64,
+      "epochs": 10,
+      "loss": "categorical_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "rmsprop",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+    "acc": 0.768032057043281,
+    "loss": 1.399515141149981,
+    "time": 5.892954903996724
+  }
+}
