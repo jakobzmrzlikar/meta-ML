@@ -8,7 +8,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation
 from timeit import default_timer as timer
 
-def run(config, train=None, test=None):
+def run(config, train=None, test=None, preprocess_data=True):
     with open(config, 'r') as f:
         meta = json.load(f)
 
@@ -24,12 +24,18 @@ def run(config, train=None, test=None):
             train = list(reader)
             train = np.array(train, dtype="float")
 
-    np.random.shuffle(train)
-    x = train[:, :-1]
-    y = keras.utils.to_categorical(train[:, -1], num_classes=10)
 
-    dataset["instances"] = train.shape[0]
-    dataset["features"] = train.shape[1]-1
+    if preprocess_data:
+        np.random.shuffle(train)
+        x = train[:, :-1]
+        y = keras.utils.to_categorical(train[:, -1], num_classes=10)
+    else:
+        x = train[0]
+        y = train[1]
+
+    dataset["instances"] = len(x)
+    dataset["features"] = len(x[0])
+
     shape = (dataset["features"],)
 
     if hyperparams["type"] == "Sequential":
@@ -49,7 +55,7 @@ def run(config, train=None, test=None):
 
     start = timer()
 
-    model.fit(
+    history = model.fit(
         x,
         y,
         epochs=hyperparams["epochs"],
@@ -64,9 +70,13 @@ def run(config, train=None, test=None):
             test = list(reader)
             test = np.array(test, dtype="float")
 
-    np.random.shuffle(test)
-    x = test[:, :-1]
-    y = keras.utils.to_categorical(test[:, -1])
+    if preprocess_data:
+        np.random.shuffle(test)
+        x = test[:, :-1]
+        y = keras.utils.to_categorical(test[:, -1])
+    else:
+        x = test[0]
+        y = test[1]
 
     loss_and_metrics = model.evaluate(
         x,
