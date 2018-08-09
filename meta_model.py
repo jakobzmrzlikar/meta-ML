@@ -9,7 +9,7 @@ import time
 seed = 42
 np.random.seed(seed)
 
-def quick_train(model, data):
+def quick_train(model, data, eval=False):
 
     # Prepare training data
     np.random.shuffle(data)
@@ -33,20 +33,21 @@ def quick_train(model, data):
         verbose=0,
     )
 
-    # loss_and_metrics = model.evaluate(x_test, y_test, verbose=0)
-    # print("{}: {:.2f}".format(model.metrics_names[1], loss_and_metrics[1]))
-    #
-    # scores = []
-    # scores.append(loss_and_metrics[1])
-    # classes = model.predict(x_test)
-    # big = small = 0
-    # for i in range(len(classes)):
-    #     error = int(abs(classes[i][0]-y_test[i]))
-    #     print("Predicted: {}, actual: {}, error: {}".format(
-    #     int(classes[i][0]), y_test[i], error))
-    #
-    # print()
-    # print("Test loss:", loss_and_metrics)
+    if eval:
+        loss_and_metrics = model.evaluate(x, y, verbose=0)
+        print("{}: {:.2f}".format(model.metrics_names[1], loss_and_metrics[1]))
+
+        scores = []
+        scores.append(loss_and_metrics[1])
+        classes = model.predict(x)
+        big = small = 0
+        for i in range(len(classes)):
+            error = int(abs(classes[i][0]-y[i]))
+            print("Predicted: {}, actual: {}, error: {}".format(
+            int(classes[i][0]), y[i], error))
+
+        print()
+        print("Test loss:", loss_and_metrics)
 
     model.save_weights("meta/weights.hdf5")
 
