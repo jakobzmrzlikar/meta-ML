@@ -1,0 +1,29 @@
+{
+  "dataset": {
+    "id": "imbd",
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "sigomid"
+      ],
+      "Dense": [
+        32,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 64,
+      "epochs": 10,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "sgd",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+  }
+}
