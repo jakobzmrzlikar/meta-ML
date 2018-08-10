@@ -6,7 +6,7 @@
     "architecture": {
       "Activation": [
         "relu",
-        "sigomid"
+        "sigmoid"
       ],
       "Dense": [
         32,
