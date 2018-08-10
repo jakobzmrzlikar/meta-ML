@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "imdb"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "sigmoid",
+        "sigmoid"
+      ],
+      "Dense": [
+        64,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 32,
+      "epochs": 100,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "rmsprop",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}

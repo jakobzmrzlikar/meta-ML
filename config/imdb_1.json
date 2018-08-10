@@ -1,0 +1,34 @@
+{
+  "dataset": {
+    "features": 400,
+    "id": "imdb",
+    "instances": 25000
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 16,
+      "epochs": 10,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "adagrad",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+    "acc": 0.50012,
+    "loss": 7.9692796461486815,
+    "time": 25.328285247000167
+  }
+}

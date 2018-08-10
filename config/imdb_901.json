@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "imdb"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "hard_sigmoid",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 16,
+      "epochs": 20,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "adagrad",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}
