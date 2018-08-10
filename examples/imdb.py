@@ -2,7 +2,7 @@ import json
 import csv
 import numpy as np
 import keras
-from keras.datasets import imbd
+from keras.datasets import imdb
 from keras.models import model_from_json
 from keras.preprocessing import sequence
 
