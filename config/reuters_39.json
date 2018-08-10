@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "reuters"
+    "features": 1000,
+    "id": "reuters",
+    "instances": 8982
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.7653606411928804,
+    "loss": 1.7192344589097523,
+    "time": 141.72067250111286
+  }
 }
