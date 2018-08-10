@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "imdb"
+    "features": 400,
+    "id": "imdb",
+    "instances": 25000
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.5001199999809265,
+    "loss": 7.969286241760254,
+    "time": 16.82546644248896
+  }
 }
