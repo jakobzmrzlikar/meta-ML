@@ -1,6 +1,6 @@
 {
   "dataset": {
-    "id": "imbd",
+    "id": "imdb"
   },
   "model": {
     "architecture": {
