@@ -35,7 +35,7 @@ if __name__ == "__main__":
     for i in range(1, 50):
         print("---------------------------------------------------------------")
         print("Config {}/{}".format(i, 50))
-        config = "config/"+name+'_'+str(i)+".json"
+        config = "config/generated/"+name+'_'+str(i)+".json"
 
         # Generate new metadata
         run(config, train=train_data, test=test_data, preprocess_data=False)

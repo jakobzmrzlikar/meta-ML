@@ -1,7 +1,7 @@
 import json
 
 def generate(dataset):
-    with open("config/"+dataset+".json", 'r') as f:
+    with open("config/master/"+dataset+".json", 'r') as f:
         meta = json.load(f)
     with open("encoding.json", 'r') as f:
         encoding = json.load(f)
@@ -23,6 +23,6 @@ def generate(dataset):
                     for j in range(4):
                         hyperparams["batch_size"] = 2**(j+4)
                         idx+=1
-                        name = "config/"+dataset+'_'+str(idx)+".json"
+                        name = "config/generated/"+dataset+'_'+str(idx)+".json"
                         with open(name, 'w') as f:
                             json.dump(meta, f, ensure_ascii=False, indent=2, sort_keys=True)
