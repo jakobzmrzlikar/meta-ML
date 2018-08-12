@@ -8,7 +8,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation
 from timeit import default_timer as timer
 
-def run(config, train=None, test=None, preprocess_data=True):
+def run(config, train=None, test=None, preprocess_data=True, binary=False):
     with open(config, 'r') as f:
         meta = json.load(f)
 
@@ -28,7 +28,10 @@ def run(config, train=None, test=None, preprocess_data=True):
     if preprocess_data:
         np.random.shuffle(train)
         x = train[:, :-1]
-        y = keras.utils.to_categorical(train[:, -1], num_classes=10)
+        if binary:
+            y = train[:, -1]
+        else:
+            y = keras.utils.to_categorical(train[:, -1])
     else:
         x = train[0]
         y = train[1]
@@ -73,7 +76,10 @@ def run(config, train=None, test=None, preprocess_data=True):
     if preprocess_data:
         np.random.shuffle(test)
         x = test[:, :-1]
-        y = keras.utils.to_categorical(test[:, -1])
+        if binary:
+            y = test[:, -1]
+        else:
+            y = keras.utils.to_categorical(test[:, -1])
     else:
         x = test[0]
         y = test[1]

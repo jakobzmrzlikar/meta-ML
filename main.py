@@ -38,7 +38,7 @@ if __name__ == "__main__":
         config = "config/generated/"+name+'_'+str(i)+".json"
 
         # Generate new metadata
-        run(config, train=train_data, test=test_data, preprocess_data=False)
+        run(config, train=train_data, test=test_data, preprocess_data=True, binary=False)
 
         # Append new data to metadataset
         data = np.vstack((data, np.array(encode(config))))
