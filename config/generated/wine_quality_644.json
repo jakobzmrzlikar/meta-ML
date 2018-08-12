@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "wine_quality"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "sigmoid",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        10
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 128,
+      "epochs": 10,
+      "loss": "categorical_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "adagrad",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}

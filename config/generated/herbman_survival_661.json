@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "herbman_survival"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "sigmoid",
+        "sigmoid"
+      ],
+      "Dense": [
+        64,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 16,
+      "epochs": 20,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "rmsprop",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}

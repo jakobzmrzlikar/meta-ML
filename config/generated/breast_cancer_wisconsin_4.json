@@ -1,0 +1,34 @@
+{
+  "dataset": {
+    "features": 9,
+    "id": "banknote_authentication",
+    "instances": 489
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 128,
+      "epochs": 10,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "sgd",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+    "acc": 0.8047619030589149,
+    "loss": 0.4733381577900478,
+    "time": 0.3890128260009078
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "dataset": {
+    "features": 57,
+    "id": "spambase",
+    "instances": 3221
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 16,
+      "epochs": 10,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "sgd",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+    "acc": 0.618840579710145,
+    "loss": 0.6416895158048989,
+    "time": 3.2340129500007606
+  }
+}

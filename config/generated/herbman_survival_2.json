@@ -1,0 +1,34 @@
+{
+  "dataset": {
+    "features": 3,
+    "id": "herbman_survival",
+    "instances": 214
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 32,
+      "epochs": 10,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "sgd",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+    "acc": 0.8152173913043478,
+    "loss": 2.928381691808286,
+    "time": 0.3343990070006839
+  }
+}

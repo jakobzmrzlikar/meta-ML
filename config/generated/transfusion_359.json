@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "transfusion"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "sigmoid"
+      ],
+      "Dense": [
+        128,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 64,
+      "epochs": 20,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "nadam",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}

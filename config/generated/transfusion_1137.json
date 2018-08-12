@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "transfusion"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "hard_sigmoid",
+        "sigmoid"
+      ],
+      "Dense": [
+        256,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 16,
+      "epochs": 10,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "rmsprop",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}

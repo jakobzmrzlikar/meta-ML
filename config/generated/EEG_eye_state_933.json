@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "EEG_eye_state"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "hard_sigmoid",
+        "sigmoid"
+      ],
+      "Dense": [
+        128,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 16,
+      "epochs": 20,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "sgd",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}

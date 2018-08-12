@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "spambase"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 32,
+      "epochs": 50,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "nadam",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}

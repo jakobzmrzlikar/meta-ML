@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "shuttle"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "tanh",
+        "softmax"
+      ],
+      "Dense": [
+        64,
+        8
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 64,
+      "epochs": 20,
+      "loss": "categorical_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "adam",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}

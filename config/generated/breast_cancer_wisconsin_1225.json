@@ -1,0 +1,28 @@
+{
+  "dataset": {
+    "id": "banknote_authentication"
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "hard_sigmoid",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 16,
+      "epochs": 50,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "nadam",
+      "type": "Sequential"
+    }
+  },
+  "results": {}
+}

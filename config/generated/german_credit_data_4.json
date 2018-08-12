@@ -1,0 +1,34 @@
+{
+  "dataset": {
+    "features": 23,
+    "id": "german_credit_data",
+    "instances": 700
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        1
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 128,
+      "epochs": 10,
+      "loss": "binary_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "sgd",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+    "acc": 0.7100000039736429,
+    "loss": 0.6135153412818909,
+    "time": 0.3960258769984648
+  }
+}

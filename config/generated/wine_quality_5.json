@@ -1,0 +1,34 @@
+{
+  "dataset": {
+    "features": 11,
+    "id": "wine_quality",
+    "instances": 5198
+  },
+  "model": {
+    "architecture": {
+      "Activation": [
+        "relu",
+        "sigmoid"
+      ],
+      "Dense": [
+        32,
+        10
+      ]
+    },
+    "hyperparameters": {
+      "batch_size": 16,
+      "epochs": 20,
+      "loss": "categorical_crossentropy",
+      "metrics": [
+        "accuracy"
+      ],
+      "optimizer": "adamax",
+      "type": "Sequential"
+    }
+  },
+  "results": {
+    "acc": 0.3964588144956138,
+    "loss": 1.335383150878551,
+    "time": 9.629293573998439
+  }
+}
