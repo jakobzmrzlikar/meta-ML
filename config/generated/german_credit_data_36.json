@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "german_credit_data"
+    "features": 23,
+    "id": "german_credit_data",
+    "instances": 700
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.5966666690508524,
+    "loss": 0.7526326545079549,
+    "time": 2.528884519816188
+  }
 }

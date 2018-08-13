@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "herbman_survival"
+    "features": 3,
+    "id": "herbman_survival",
+    "instances": 214
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.8152173938958541,
+    "loss": 2.945875478827435,
+    "time": 1.828792083996472
+  }
 }

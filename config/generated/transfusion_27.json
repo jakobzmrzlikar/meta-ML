@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "transfusion"
+    "features": 4,
+    "id": "transfusion",
+    "instances": 524
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.20982142857142858,
+    "loss": 12.597330229622978,
+    "time": 2.600362575269031
+  }
 }

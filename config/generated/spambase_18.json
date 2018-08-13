@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "spambase"
+    "features": 57,
+    "id": "spambase",
+    "instances": 3221
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.7253623188405797,
+    "loss": 0.621370031695435,
+    "time": 3.911378191684406
+  }
 }

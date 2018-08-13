@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "banknote_authentication"
+    "features": 4,
+    "id": "banknote_authentication",
+    "instances": 960
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.9805825242718447,
+    "loss": 0.14667225788229876,
+    "time": 2.1046659412010627
+  }
 }

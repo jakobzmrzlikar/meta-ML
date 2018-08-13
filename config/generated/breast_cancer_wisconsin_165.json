@@ -1,6 +1,6 @@
 {
   "dataset": {
-    "id": "banknote_authentication"
+    "id": "breast_cancer_wisconsin"
   },
   "model": {
     "architecture": {
@@ -20,7 +20,7 @@
       "metrics": [
         "accuracy"
       ],
-      "optimizer": "adadelta",
+      "optimizer": "rmsprop",
       "type": "Sequential"
     }
   },

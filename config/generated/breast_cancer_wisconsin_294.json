@@ -1,6 +1,6 @@
 {
   "dataset": {
-    "id": "banknote_authentication"
+    "id": "breast_cancer_wisconsin"
   },
   "model": {
     "architecture": {

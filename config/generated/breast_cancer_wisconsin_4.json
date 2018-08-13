@@ -1,7 +1,7 @@
 {
   "dataset": {
     "features": 9,
-    "id": "banknote_authentication",
+    "id": "breast_cancer_wisconsin",
     "instances": 489
   },
   "model": {
@@ -22,13 +22,13 @@
       "metrics": [
         "accuracy"
       ],
-      "optimizer": "sgd",
+      "optimizer": "adadelta",
       "type": "Sequential"
     }
   },
   "results": {
-    "acc": 0.8047619030589149,
-    "loss": 0.4733381577900478,
-    "time": 0.3890128260009078
+    "acc": 0.914285713718051,
+    "loss": 0.4035316478638422,
+    "time": 1.2391500158129451
   }
 }
