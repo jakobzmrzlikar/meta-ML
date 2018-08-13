@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "EEG_eye_state"
+    "features": 14,
+    "id": "EEG_eye_state",
+    "instances": 10486
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.5445037829011188,
+    "loss": 7.341731580989754,
+    "time": 11.333979046999957
+  }
 }
