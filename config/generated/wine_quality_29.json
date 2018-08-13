@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "wine_quality"
+    "features": 11,
+    "id": "wine_quality",
+    "instances": 5198
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.4172440338951519,
+    "loss": 1.2843470692726353,
+    "time": 92.72926702372814
+  }
 }

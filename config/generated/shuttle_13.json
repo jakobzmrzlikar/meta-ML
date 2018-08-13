@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "shuttle"
+    "features": 9,
+    "id": "shuttle",
+    "instances": 46400
   },
   "model": {
     "architecture": {
@@ -24,5 +26,9 @@
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.7913793103448276,
+    "loss": 3.362568182287545,
+    "time": 741.7812650277131
+  }
 }
