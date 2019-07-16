@@ -29,7 +29,7 @@ if __name__ == "__main__":
     name = input("Name of the dataset: ")
     train_data, test_data = load(name)
 
-    for i in range(1, 50):
+    for i in range(1, 51):
         print("---------------------------------------------------------------")
         print("Config {}/{}".format(i, 50))
         config = "config/generated/"+name+'_'+str(i)+".json"
