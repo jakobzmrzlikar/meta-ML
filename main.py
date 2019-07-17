@@ -22,8 +22,11 @@ def load(name):
 
 if __name__ == "__main__":
 
-    # Load the metadataset
-    data = np.load("meta/data.npy")
+    # Load the metadataset or create it if it doesn't exist
+    try:
+        data = np.load("meta/data.npy")
+    except:
+        data = np.ndarray(shape=(36,))
 
     # Load training and test data
     name = input("Name of the dataset: ")
@@ -38,6 +41,6 @@ if __name__ == "__main__":
         run(config, train=train_data, test=test_data, preprocess_data=True, binary=False)
 
         # Append new data to metadataset
-        data = np.vstack((data, np.array(encode(config))))
-
+        data = np.vstack((data, encode(config)))
+    
     np.save("meta/data.npy", data)

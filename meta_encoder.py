@@ -1,5 +1,6 @@
 import json
 import numpy as np
+from keras.utils import to_categorical
 
 def encode(path):
     with open(path, "r") as f:
@@ -11,20 +12,17 @@ def encode(path):
     dataset = meta["dataset"]
     conf = meta["model"]
     arch = conf["architecture"]
-    hyperparams = conf["hyperparameters"]
+    fit = conf["hyperparameters"]["fit"]
+    build = conf["hyperparameters"]["build"]
     results = meta["results"]
 
-    data = [0 for i in range(10)]
+    data = np.zeros(10, dtype='int')
     for a, num in zip(arch["Activation"], arch["Dense"]):
         data[encoding["activation"][a]] += num
-
-    data.append(dataset["instances"])
-    data.append(dataset["features"])
-    data.append(hyperparams["batch_size"])
-    data.append(hyperparams["epochs"])
-    data.append(encoding["loss"][hyperparams["loss"]])
-    data.append(encoding["optimizer"][hyperparams["optimizer"]])
-    data.append(round(100*results["acc"]))
-
-    data = np.array(data, dtype='int')
+    
+    data = np.append(data, [dataset["instances"], dataset["features"]])
+    data = np.append(data, [fit["batch_size"], fit["epochs"]])
+    data = np.append(data, to_categorical(encoding["loss"][build["loss"]], num_classes=14, dtype='int'))
+    data = np.append(data, to_categorical(encoding["optimizer"][build["optimizer"]], num_classes=7, dtype='int'))
+    data = np.append(data, round(100*results["acc"]))
     return data
