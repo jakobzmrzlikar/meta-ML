@@ -14,13 +14,17 @@
       ]
     },
     "hyperparameters": {
-      "batch_size": 32,
-      "epochs": 50,
-      "loss": "categorical_crossentropy",
-      "metrics": [
-        "accuracy"
-      ],
-      "optimizer": "adadelta",
+      "build": {
+        "loss": "categorical_crossentropy",
+        "metrics": [
+          "accuracy"
+        ],
+        "optimizer": "rmsprop"
+      },
+      "fit": {
+        "batch_size": 32,
+        "epochs": 50
+      },
       "type": "Sequential"
     }
   },

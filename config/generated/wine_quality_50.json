@@ -1,6 +1,8 @@
 {
   "dataset": {
-    "id": "wine_quality"
+    "features": 11,
+    "id": "wine_quality",
+    "instances": 5198
   },
   "model": {
     "architecture": {
@@ -14,15 +16,23 @@
       ]
     },
     "hyperparameters": {
-      "batch_size": 32,
-      "epochs": 10,
-      "loss": "categorical_crossentropy",
-      "metrics": [
-        "accuracy"
-      ],
-      "optimizer": "adamax",
+      "build": {
+        "loss": "categorical_crossentropy",
+        "metrics": [
+          "accuracy"
+        ],
+        "optimizer": "adadelta"
+      },
+      "fit": {
+        "batch_size": 32,
+        "epochs": 10
+      },
       "type": "Sequential"
     }
   },
-  "results": {}
+  "results": {
+    "acc": 0.3356428022931593,
+    "loss": 1.7336663494117448,
+    "time": 6.635243918994092
+  }
 }

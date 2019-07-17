@@ -16,19 +16,23 @@
       ]
     },
     "hyperparameters": {
-      "batch_size": 128,
-      "epochs": 100,
-      "loss": "categorical_crossentropy",
-      "metrics": [
-        "accuracy"
-      ],
-      "optimizer": "adamax",
+      "build": {
+        "loss": "categorical_crossentropy",
+        "metrics": [
+          "accuracy"
+        ],
+        "optimizer": "adadelta"
+      },
+      "fit": {
+        "batch_size": 128,
+        "epochs": 100
+      },
       "type": "Sequential"
     }
   },
   "results": {
-    "acc": 0.4411085451952396,
-    "loss": 1.331364681575737,
-    "time": 19.089282137007103
+    "acc": 0.4303310239103962,
+    "loss": 1.2682337539759483,
+    "time": 14.439658461997169
   }
 }

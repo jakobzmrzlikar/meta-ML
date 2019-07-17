@@ -14,6 +14,7 @@
       ]
     },
     "hyperparameters": {
+      "train": {
       "batch_size": 16,
       "epochs": 10,
       "loss": "binary_crossentropy",
