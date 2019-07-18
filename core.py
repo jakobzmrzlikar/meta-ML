@@ -27,8 +27,7 @@ def build_model(model_type, num_features, arch, hyperparams):
     return model
 
 
-def test_model(model, hyperparams, datatset, test=None, preprocess_data=True, binary=False):
-    if 
+def test_model(model, model_type, hyperparams, datatset, test=None, preprocess_data=True, binary=False):
     if test is None:
         with open("data/" + datatset["id"] + "/test.csv", 'r') as d:
             reader = csv.reader(d, delimiter=',')
@@ -46,11 +45,18 @@ def test_model(model, hyperparams, datatset, test=None, preprocess_data=True, bi
         x = test[0]
         y = test[1]
 
-    loss_and_metrics = model.evaluate(
-        x,
-        y,
-        **hyperparams["evaluate"]
-    )
+    if model_type == "Sequential":
+        loss_and_metrics = model.evaluate(
+            x,
+            y,
+            **hyperparams["evaluate"]
+        )
+    elif model_type == "SVC":
+        loss_and_metrics = model.score(
+            x,
+            y, 
+            **hyperparams["evaluate"]
+        )
     return loss_and_metrics
 
 def run(config, train=None, test=None, preprocess_data=True, binary=False):
@@ -95,7 +101,7 @@ def run(config, train=None, test=None, preprocess_data=True, binary=False):
     end = timer()
     results["time"] = end-start
 
-    loss_and_metrics = test_model(model, hyperparams, dataset, test, preprocess_data, binary)
+    loss_and_metrics = test_model(model, conf["type"], hyperparams, dataset, test, preprocess_data, binary)
     for name,value in zip(model.metrics_names, loss_and_metrics):
         results[name] = value  
 
