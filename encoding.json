@@ -1,4 +1,23 @@
 {
+  "data_type": {
+    "numerical": 0,
+    "image": 1,
+    "video": 2,
+    "audio": 3,
+    "text": 4
+  },
+  "model_type": {
+    "Sequential": 0,
+    "SVC": 1
+  },
+  "kernel": {
+    "linear": 0,
+    "poly": 1,
+    "rbf": 2,
+    "sigmoid": 3,
+    "precomputed": 4,
+    "callable": 5
+  },
   "activation": {
     "elu": 1,
     "hard_sigmoid": 8,
@@ -35,5 +54,9 @@
     "nadam": 6,
     "rmsprop": 1,
     "sgd": 0
+  },
+  "decision_function": {
+    "ovr": 0,
+    "ovo": 1
   }
 }
