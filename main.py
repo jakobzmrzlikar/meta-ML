@@ -26,21 +26,21 @@ if __name__ == "__main__":
     try:
         data = np.load("meta/data.npy")
     except:
-        data = np.ndarray(shape=(36,))
+        data = np.ndarray(shape=(148,))
 
     # Load training and test data
     name = input("Name of the dataset: ")
     train_data, test_data = load(name)
 
-    for i in range(1, 51):
+    for i in range(1, 2):
         print("---------------------------------------------------------------")
         print("Config {}/{}".format(i, 50))
         config = "config/generated/"+name+'_'+str(i)+".json"
 
         # Generate new metadata
-        run(config, train=train_data, test=test_data, preprocess_data=True, binary=False)
+        run(config, train=train_data, test=test_data, preprocess_data=True, one_hot=False, verbose=True)
 
         # Append new data to metadataset
-        data = np.vstack((data, encode(config)))
+        data = np.vstack((data, np.array(encode(config))))
     
     np.save("meta/data.npy", data)

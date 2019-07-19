@@ -51,6 +51,7 @@ def fit_model(model, model_type, x, y, hyperparams, results):
     if model_type == "Sequential":  
         history = model.fit(x, y, **hyperparams["fit"])
     else:
+        print("Fitting the model...")
         model = model.fit(x, y, **hyperparams["fit"])
 
     end = timer()
@@ -59,7 +60,7 @@ def fit_model(model, model_type, x, y, hyperparams, results):
     return model
 
 
-def test_model(model, model_type, hyperparams, datatset, test=None, preprocess_data=True, binary=False):
+def test_model(model, model_type, hyperparams, datatset, test=None, preprocess_data=True, one_hot=False):
     if test is None:
         with open("data/" + datatset["id"] + "/test.csv", 'r') as d:
             reader = csv.reader(d, delimiter=',')
@@ -69,10 +70,10 @@ def test_model(model, model_type, hyperparams, datatset, test=None, preprocess_d
     if preprocess_data:
         np.random.shuffle(test)
         x = test[:, :-1]
-        if binary:
-            y = test[:, -1]
-        else:
+        if one_hot:
             y = keras.utils.to_categorical(test[:, -1])
+        else:
+            y = test[:, -1]
     else:
         x = test[0]
         y = test[1]
@@ -92,7 +93,7 @@ def test_model(model, model_type, hyperparams, datatset, test=None, preprocess_d
     return loss_and_metrics
 
 
-def run(config, train=None, test=None, preprocess_data=True, binary=False):
+def run(config, train=None, test=None, preprocess_data=True, one_hot=False, verbose=True):
     with open(config, 'r') as f:
         meta = json.load(f)
 
@@ -111,10 +112,10 @@ def run(config, train=None, test=None, preprocess_data=True, binary=False):
     if preprocess_data:
         np.random.shuffle(train)
         x = train[:, :-1]
-        if binary:
-            y = train[:, -1]
-        else:
+        if one_hot:
             y = keras.utils.to_categorical(train[:, -1])
+        else:
+            y = train[:, -1]
     else:
         x = train[0]
         y = train[1]
@@ -124,13 +125,17 @@ def run(config, train=None, test=None, preprocess_data=True, binary=False):
 
     model = build_model(model_type=conf["type"], num_features=dataset['features'], arch=conf["architecture"], hyperparams=hyperparams)
 
-
     model = fit_model(model, conf["type"], x, y, hyperparams, results)
+    print(model)
 
-    loss_and_metrics = test_model(model, conf["type"], hyperparams, dataset, test, preprocess_data, binary)
-    for name,value in zip(model.metrics_names, loss_and_metrics):
-        results[name] = value  
+    loss_and_metrics = test_model(model, conf["type"], hyperparams, dataset, test, preprocess_data, one_hot)
+    if conf["type"] == 'Sequential':
+        for name,value in zip(model.metrics_names, loss_and_metrics):
+            results[name] = value 
+    else:
+        results["acc"] = loss_and_metrics 
 
-    pprint(meta)
+    if verbose:
+        pprint(meta)
     with open(config, 'w') as f:
         json.dump(meta, f, ensure_ascii=False, indent=2, sort_keys=True)
