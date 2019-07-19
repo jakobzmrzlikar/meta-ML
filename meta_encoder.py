@@ -51,15 +51,10 @@ def encode(path):
         data += to_categorical(encoding["loss"][build["loss"]],
         num_classes=len(encoding["loss"]), dtype='int')
     else:
-    data.append(bin_encode("loss_weights", build))
-    data.append(bin_encode("sample_weight_mode", build))
-    data.append(bin_encode("wighted_metrics", build
-                           data.append(bin_encode("loss_weights", build))
         data += [0] * len(encoding["loss"])
     data.append(bin_encode("loss_weights", build))
     data.append(bin_encode("sample_weight_mode", build))
-    data.append(bin_encode("wighted_metrics", build
-                           data.append(bin_encode("loss_weights", build))
+    data.append(bin_encode("wighted_metrics", build))
     data.append(bin_encode("target_tensors", build))
 
 
@@ -124,11 +119,11 @@ def encode(path):
     else:
         data += [1, 0]
     data.append(bin_encode("random_state", build))
-        if bin_encode("multi_class", build):
-            if build["multi_class"] == 'crammer_singer':
-                data += [0, 1]
-        else:
-            data += [1, 0]
+    if bin_encode("multi_class", build):
+        if build["multi_class"] == 'crammer_singer':
+            data += [0, 1]
+    else:
+        data += [1, 0]
     if bin_encode("fit_intercept", build):
         data.append(int(build["fit_intercept"]))
     else:
@@ -171,7 +166,7 @@ def encode(path):
         data.append(build["radius"])
     else:
         data.append(1.0)
-    data.append(bin_encode("outlier_label"), build)
+    data.append(bin_encode("outlier_label", build))
 
 
     # encode compile hyperparameters for GaussianNB, MultinomialNB, ComplementNB and BernoulliNB
