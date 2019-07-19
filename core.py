@@ -6,7 +6,7 @@ import keras
 from pprint import pprint
 from keras.models import Sequential
 from keras.layers import Dense, Activation
-from sklearn import svm
+from sklearn import svm, neighbors, naive_bayes, tree
 from timeit import default_timer as timer
 
 
@@ -23,7 +23,39 @@ def build_model(model_type, num_features, arch, hyperparams):
 
     elif model_type == 'SVC':
         model = svm.SVC(**hyperparams["compile"])
+    elif model_type == 'NuSVC':
+        model = svm.NuSVC(**hyperparams["compile"])
+    elif model_type == 'LinearSVC':
+        model = svm.LinearSVC(**hyperparams["compile"])
+    elif model_type == "KNeighborsClassifier":
+        model = neighbors.KNeighborsClassifier(**hyperparams["compile"])
+    elif model_type == "RadiusNeighborsClassifier":
+        model = neighbors.RadiusNeighborsClassifier(**hyperparams["compile"])
+    elif model_type == 'GaussianNB':
+        model = naive_bayes.GaussianNB(**hyperparams["compile"])
+    elif model_type == 'MultinomialNB':
+        model = naive_bayes.MultinomialNB(**hyperparams["compile"])
+    elif model_type == 'ComplementNB':
+        model = naive_bayes.ComplementNB(**hyperparams["compile"])
+    elif model_type == 'BernoulliNB':
+        model = naive_bayes.BernoulliNB(**hyperparams["compile"])
+    elif model_type == "DecisionTreeClassifier":
+        model = tree.DecisionTreeClassifier(**hyperparams["compile"])
 
+    return model
+
+
+def fit_model(model, model_type, x, y, hyperparams, results):
+    start = timer()
+    
+    if model_type == "Sequential":  
+        history = model.fit(x, y, **hyperparams["fit"])
+    else:
+        model = model.fit(x, y, **hyperparams["fit"])
+
+    end = timer()
+    results["time"] = end-start
+    
     return model
 
 
@@ -59,6 +91,7 @@ def test_model(model, model_type, hyperparams, datatset, test=None, preprocess_d
         )
     return loss_and_metrics
 
+
 def run(config, train=None, test=None, preprocess_data=True, binary=False):
     with open(config, 'r') as f:
         meta = json.load(f)
@@ -91,15 +124,8 @@ def run(config, train=None, test=None, preprocess_data=True, binary=False):
 
     model = build_model(model_type=conf["type"], num_features=dataset['features'], arch=conf["architecture"], hyperparams=hyperparams)
 
-    start = timer()
 
-    history = model.fit(
-        x,
-        y,
-        **hyperparams["fit"]
-    )
-    end = timer()
-    results["time"] = end-start
+    model = fit_model(model, conf["type"], x, y, hyperparams, results)
 
     loss_and_metrics = test_model(model, conf["type"], hyperparams, dataset, test, preprocess_data, binary)
     for name,value in zip(model.metrics_names, loss_and_metrics):

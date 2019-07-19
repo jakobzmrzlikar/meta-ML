@@ -8,7 +8,16 @@
   },
   "model_type": {
     "Sequential": 0,
-    "SVC": 1
+    "SVC": 1,
+    "NuSVC": 2,
+    "LinearSVC": 3,
+    "KNeighborsClassifier": 4,
+    "RadiusNeighborsClassifier": 5,
+    "GaussianNB": 6,
+    "MultinomialNB": 7,
+    "ComplementNB": 8,
+    "BernoulliNB": 9,
+    "DecisionTreeClassifier": 10
   },
   "kernel": {
     "linear": 0,
@@ -55,8 +64,35 @@
     "rmsprop": 1,
     "sgd": 0
   },
-  "decision_function": {
+  "decision_function_shape": {
     "ovr": 0,
     "ovo": 1
+  },
+  "knn_algorithm": {
+    "ball_tree": 0,
+    "kd_tree": 1,
+    "brute": 2,
+    "auto": 3
+  },
+  "metric": {
+    "euclidean": 0,
+    "manhattan": 1,
+    "chebyshev": 2,
+    "minkowski": 3,
+    "wminkowski": 4,
+    "seuclidean": 5,
+    "mahalanobis": 6,
+    "haversine": 7,
+    "hamming": 8,
+    "canberra": 9,
+    "braycurtis": 10,
+    "jaccard": 11,
+    "matching": 12,
+    "dice": 13,
+    "kulsinski": 14,
+    "rogerstanimoto": 15,
+    "russellrao": 16,
+    "sokalmichener": 17,
+    "sokalsneath": 18
   }
 }
