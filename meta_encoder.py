@@ -25,13 +25,13 @@ def encode(path):
 
 
     # encode dataset
-    data += to_categorical(encoding["data_type"][dataset["type"]], num_classes=len(encoding["data_type"]), dtype='int')
+    data += list(to_categorical(encoding["data_type"][dataset["type"]], num_classes=len(encoding["data_type"]), dtype='int'))
     data.append(dataset["instances"])
     data.append(dataset["features"])
 
 
     # encode model type
-    data.append(to_categorical(encoding["model_type"][conf["type"]], num_classes=len(encoding["model_type"]), dtype='int'))
+    data += list(to_categorical(encoding["model_type"][conf["type"]], num_classes=len(encoding["model_type"]), dtype='int'))
 
 
     # encode keras architecture
@@ -44,12 +44,12 @@ def encode(path):
 
     # encode compile hyperparameters for Sequential
     if bin_encode("optimizer", build):
-        data += to_categorical(encoding["optimizer"][build["optimizer"]], num_classes=len(encoding["optimizer"]), dtype='int')
+        data += list(to_categorical(encoding["optimizer"][build["optimizer"]], num_classes=len(encoding["optimizer"]), dtype='int'))
     else: 
         data += [0] * len(encoding["optimizer"])
     if bin_encode("loss", build):
-        data += to_categorical(encoding["loss"][build["loss"]],
-        num_classes=len(encoding["loss"]), dtype='int')
+        data += list(to_categorical(encoding["loss"][build["loss"]],
+        num_classes=len(encoding["loss"]), dtype='int'))
     else:
         data += [0] * len(encoding["loss"])
     data.append(bin_encode("loss_weights", build))
@@ -68,7 +68,7 @@ def encode(path):
     else:
         data.append(0.5)
     if bin_encode("kernel", build):
-        data += to_categorical(encoding["kernel"][build["kernel"]], num_classes=len(encoding["kernel"]), dtype='int')
+        data += list(to_categorical(encoding["kernel"][build["kernel"]], num_classes=len(encoding["kernel"]), dtype='int'))
     else:
         data += [0] * len(encoding["kernel"])
     if bin_encode("degree", build):
@@ -115,7 +115,7 @@ def encode(path):
     else:
         data.append(-1)
     if bin_encode("decision_function_shape", build):
-        data += to_categorical(encoding["decision_function_shape"][build["decision_function_shape"]], num_classes=len(encoding["decision_function_shape"]), dtype='int')
+        data += list(to_categorical(encoding["decision_function_shape"][build["decision_function_shape"]], num_classes=len(encoding["decision_function_shape"]), dtype='int'))
     else:
         data += [1, 0]
     data.append(bin_encode("random_state", build))
@@ -141,7 +141,7 @@ def encode(path):
         data.append(5)
     data.append(bin_encode("weights", build))
     if bin_encode("algorithm", build):
-        data += to_categorical(encoding["knn_algorithm"][build["algorithm"]], num_classes=len(encoding["knn_algorithm"]), dtype='int')
+        data += list(to_categorical(encoding["knn_algorithm"][build["algorithm"]], num_classes=len(encoding["knn_algorithm"]), dtype='int'))
     else:
         data += [0] * len(encoding["knn_algorithm"])
     if bin_encode("leaf_size", build):
@@ -153,10 +153,10 @@ def encode(path):
     else:
         data.append(2)
     if bin_encode("metric", build):
-        data += to_categorical(encoding["metric"][build["metric"]],     num_classes=len(encoding["metric"]), dtype='int')
+        data += list(to_categorical(encoding["metric"][build["metric"]],     num_classes=len(encoding["metric"]), dtype='int'))
     else:
-        data += to_categorical(encoding["metric"]["minkowski"],
-        num_classes=len(encoding["metric"]), dtype='int')
+        data += list(to_categorical(encoding["metric"]["minkowski"],
+        num_classes=len(encoding["metric"]), dtype='int'))
     data.append(bin_encode("metric_params", build))
     if bin_encode("n_jobs", build):
         data.append(build["n_jobs"])
